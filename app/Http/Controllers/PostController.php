@@ -10,7 +10,10 @@ class postController extends Controller
 {
     public function index()
     {
-        $items = Post::all();
+        $items = Post::query()
+            ->with(['user'])
+            ->with(['likes'])
+            ->get();
         return response()->json([
         'data' => $items
         ], 200);

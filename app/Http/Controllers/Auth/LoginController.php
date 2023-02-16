@@ -8,6 +8,7 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+    
     public function login(Request $request)
     {
     // 新規登録の場合はユーザーUIDを設定し、登録済みの場合は該当するUserモデルを取得する。
@@ -30,4 +31,6 @@ class LoginController extends Controller
 
         return User::where('id', $user->id)->first();
     }
+
+
 }
