@@ -27,7 +27,8 @@ class postController extends Controller
     }
     public function show(Post $post)
     {
-        $item = Post::find($post);
+        $item = Post::find($post)
+            ->with(['user'])->get();
         if($item) {
             return response()->json([
                 'data' => $item
