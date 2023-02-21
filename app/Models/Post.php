@@ -18,13 +18,21 @@ class Post extends Model
         'content' => 'required | max:120',
     );
 
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($post) {
+            $post->comments()->delete();
+        });
+    }
+
     public function user()
     {
         return $this->BelongsTo(User::class);
     }
     public function likes()
     {
-        return $this->hasMany(Like::class,'post_id','id');
+        return $this->hasMany(Like::class);
     }
     public function comments()
     {

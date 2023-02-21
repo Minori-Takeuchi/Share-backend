@@ -11,7 +11,8 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $items = Comment::all();
+        $items = Comment::with(['user:id,name'])
+            ->get();
         return response()->json([
         'data' => $items
         ], 200);
@@ -25,7 +26,7 @@ class CommentController extends Controller
     }
     public function show(Comment $comment)
     {
-        $item = Comment::find($post);
+        $item = Comment::find($comment);
         if($item) {
             return response()->json([
                 'data' => $item
@@ -38,7 +39,7 @@ class CommentController extends Controller
     }
     public function destroy(Comment $comment)
     {
-        $item = Comment::where('id', $post->id)->delete();
+        $item = Comment::where('id', $comment->id)->delete();
         if ($item) {
             return response()->json([
             'message' => 'Deleted successfully',

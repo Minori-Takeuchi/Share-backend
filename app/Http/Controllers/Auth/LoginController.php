@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -31,7 +32,4 @@ class LoginController extends Controller
 
         return User::where('id', $user->id)->first();
     }
-
-
-
 }

@@ -26,7 +26,7 @@ class LikeController extends Controller
     
     public function destroy(Like $like)
     {
-        $item = Like::where('id', $post->id)->delete();
+        $item = Like::where('id', $like->id)->delete();
         if ($item) {
             return response()->json([
             'message' => 'Deleted successfully',
