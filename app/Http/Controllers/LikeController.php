@@ -9,13 +9,6 @@ use App\Models\User;
 
 class LikeController extends Controller
 {
-    public function index()
-    {
-        $items = Like::all();
-        return response()->json([
-        'data' => $items
-        ], 200);
-    }
     public function store(Request $request)
     {
         $item = Like::create($request->all());

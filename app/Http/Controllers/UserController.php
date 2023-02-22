@@ -14,17 +14,4 @@ class UserController extends Controller
         'data' => $item
         ], 201);
     }
-    public function show(User $user)
-    {
-        $item = User::find($user);
-        if($item) {
-            return response()->json([
-                'data' => $item
-            ],200);
-        } else {
-            return response()->json([
-                'massage' => 'Not found'
-            ],404);
-        }
-    }
 }
